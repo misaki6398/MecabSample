@@ -1,0 +1,25 @@
+<h1 id="tableLabel">Japnese NLP</h1>
+<input type="text" placeholder="Please enter the keyword which you want to analyze." size="100" [(ngModel)]="data.sentence">
+<button (click)="postData()">分析</button>
+<p *ngIf="!models"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="models">
+  <thead>
+    <tr>
+      <th>表記</th>
+      <th>品詞</th>
+      <th>品詞細分類</th>
+      <th>活用型</th>
+      <th>JackNotes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let model of models">
+      <td>{{ model.keyword }}</td>
+      <td>{{ model.hinshi }}</td>
+      <td>{{ model.hinshiHosoBunrui }}</td>
+      <td>{{ model.katsuyogata }}</td>
+      <td><a target="_blank" href="{{model.jackNoteUrl}}"> {{ model.jackNoteText}}</a></td>
+    </tr>
+  </tbody>
+</table>
